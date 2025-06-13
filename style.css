@@ -2,8 +2,8 @@ body {
     min-height: 100vh;
     min-width: 100vh;
     background-color: #335566;
-    color: white;
-    background-image: url("assets/background.JPG");
+    color: #112233;
+    background-image: url("assets/background.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -12,12 +12,12 @@ body {
 h1 {
     text-align: center;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 25px;
 }
 
 p {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -38,13 +38,13 @@ p {
     display: grid;
     justify-content: center;
     grid-gap: 16px;
-    grid-template-columns: repeat(3, 340px);
-    grid-template-rows: repeat(6, calc(240px / 4 * 4));
+    grid-template-columns: repeat(4, 225px);
+    grid-template-rows: repeat(6, calc(150px / 4 * 4));
 }
 
 .card {
-    height: calc(140px / 2 * 3);
-    width: 340px;
+    height: calc(90px / 2 * 3);
+    width: 200px;
     border-radius: 10px;
     background-color: white;
     position: relative;
@@ -53,8 +53,8 @@ p {
 }
 
 .front-image {
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
 }
 
 .card.flipped {

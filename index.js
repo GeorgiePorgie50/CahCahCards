@@ -4,20 +4,28 @@ let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
 
-const wrongSound = document.getElementById('wrong-sound');
+const wrongSound = document.getElementById('imthebest');
+const winSoundMap = {
+    "image1": "assets/fishy.mp3",
+    "image2": "assets/boy.mp3",
+    "image3": "assets/wang.mp3",
+    "image4": "assets/goofy.mp3",
+    "image5": "assets/belly.mp3"
+}
 
 document.querySelector(".score").textContent = score;
 
 const cardsData = [
-    { "image": "assets/chili.png", "name": "chili" },
-    { "image": "assets/grapes.png", "name": "grapes" },
-    { "image": "assets/lemon.png", "name": "lemon" },
-    { "image": "assets/orange.png", "name": "orange" },
-    { "image": "assets/pineapple.png", "name": "pineapple" },
-    { "image": "assets/strawberry.png", "name": "strawberry" },
-    { "image": "assets/tomato.png", "name": "tomato" },
-    { "image": "assets/watermelon.png", "name": "watermelon" },
-    { "image": "assets/cherries.png", "name": "cherries" }
+    { "image": "assets/image1.png", "name": "image1" },
+    { "image": "assets/image2.png", "name": "image2" },
+    { "image": "assets/image3.png", "name": "image3" },
+    { "image": "assets/image4.png", "name": "image4" },
+    { "image": "assets/image5.png", "name": "image5" },
+    { "image": "assets/image1.png", "name": "image1" },
+    { "image": "assets/image2.png", "name": "image2" },
+    { "image": "assets/image3.png", "name": "image3" },
+    { "image": "assets/image4.png", "name": "image4" },
+    { "image": "assets/image5.png", "name": "image5" }
 ];
 
 cards = [...cardsData, ...cardsData];
@@ -83,15 +91,25 @@ function checkForMatch() {
     }
 }
 
+function playWinSound() {
+    const cardName = firstCard.getAttribute('data-name');
+    const soundSrc = winSoundMap[cardName];
+
+    if (soundSrc) {
+        new Audio(soundSrc).play();
+    }
+}
+
 function playWrongSound() {
-    const sound = new Audio('assets/wrong.mp3');
+    const sound = new Audio('assets/imthebest.mp3');
     sound.play();
 }
 
 function disableCards() {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
-
+    const matchedCardName = firstCard.getAttribute('data-name');
+    playWinSound(matchedCardName);
     resetBoard();
 }
 
